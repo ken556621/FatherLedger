@@ -8,10 +8,7 @@ const accountListSchema = new Schema({
     category: String,
     description: String,
     date: String,
-    payment:{
-        type: Boolean,
-        default: false
-    },
+    payment: String,
     monthlyCheck:{
         type: Boolean,
         default: false  

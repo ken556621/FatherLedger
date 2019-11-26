@@ -37,6 +37,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//public file
+app.use(express.static('public'));
 
 //Router
 app.use('/', require('./routes/home'));

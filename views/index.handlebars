@@ -22,37 +22,27 @@
 {{!-- list --}}
 <div class="container col-6 mt-4">
   <div class="list-group">
+      {{#each list}}
       <button type="button" class="list-group-item list-group-item-action active d-flex justify-content-between">
         <div class="text-monospace">
           <i class="far fa-calendar-alt"></i>日期
         </div>
         <div class="text-monospace">
           <span class="badge badge-pill badge-dark font-weight-normal">
-            $141
+            ${{{this.price}}}
           </span>
         </div>
         <div class="text-monospace">
-          類別
+          {{{this.category}}}
         </div>
         <div class="text-monospace">
           <i class="fas fa-trash"></i>刪除
         </div>
       </button>
+      {{/each}}
   </div>
 </div>
 
 
 
-<script>
-    const dateInputField = document.getElementById('dateInputField');
-    const dateInput = document.getElementById('dateInput');
-    const showDateField = document.getElementById('showDateField');
-
-    function showDateInput(){
-        dateInputField.classList.toggle('d-none')
-    }
-
-    dateInput.addEventListener('input', function(){
-      showDateField.innerHTML = dateInput.value;
-    })
-</script>
+<script src="http://localhost:3000/javascript/index.js"></script>

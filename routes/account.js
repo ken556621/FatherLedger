@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
 const Account = require('../models/account');
 const moment = require('moment');
 
@@ -10,20 +11,17 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res, next) => {
-    let selectCategory = '';
-    if(req.body.food){
-        selectCategory = 'Food';
-    }else if(req.body.cloth){
-        selectCategory = 'Cloth';
-    }else if(req.body.drink){
-        selectCategory = 'Drink';
-    }
-    // const newList = new Account({
-    //     price = req.body.price,
-    //     category = selectCategory,
-    //     description = req.body.description
-    // })
-    next();
+    console.log(req.body)
+    const newList = new Account({
+        price: req.body.price,
+        category: req.body.category,
+        description: req.body.description,
+        payment: req.body.payment 
+    })
+    newList.save(err => {
+        if(err) console.log(err)
+        return res.redirect('/');
+    })
 })
 
 
