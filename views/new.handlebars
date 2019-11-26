@@ -1,0 +1,57 @@
+<div class="container col-4 mt-4">
+    <form action="/account/new" method="POST">
+        <div class="form-group">
+            <input type="number" class="form-control" id="formGroupExampleInput" placeholder="$" name="price">
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" name="food">
+            <label class="form-check-label" for="inlineRadio1">
+                <span><i class="fas fa-bread-slice"></i>食物</span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" name="cloth">
+            <label class="form-check-label" for="inlineRadio2">
+                <span><i class="fas fa-tshirt"></i>衣服</span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" name="drink">
+            <label class="form-check-label" for="inlineRadio3">
+                <span><i class="fas fa-cocktail"></i>飲料</span>
+            </label>
+        </div>
+        <div class="form-group mt-2">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="描述" name="description"></textarea>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" name="creditcard">
+            <label class="form-check-label" for="inlineRadio1">
+                <span><i class="far fa-credit-card"></i>信用卡</span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" name="cash">
+            <label class="form-check-label" for="inlineRadio2">
+                <span><i class="fas fa-money-bill"></i>現金</span>
+            </label>
+        </div>
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="monthlyCheck">
+            <label class="form-check-label" for="defaultCheck1">
+                將其設為每月固定開銷
+            </label>
+        </div>
+        <div class="btn-wrapper d-flex justify-content-between mt-4">
+            <div class="btn-home">
+                <a href="/"><button class="btn btn-secondary">首頁</button></a>
+            </div>
+            <div class="btn-save d-flex">
+                <div class="btn-reset mr-2">
+                    <button class="btn btn-secondary" type="reset">重設</button>
+                </div>
+                <button class="btn btn-secondary" type="submit">儲存</button>
+            </div>
+        </div>
+    </form>
+</div>

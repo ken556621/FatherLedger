@@ -1,0 +1,58 @@
+{{!-- button --}}
+<div class="btn-wrapper d-flex justify-content-center m-4">
+    <form action="/account/date" method="GET">
+      <div class="date-input mt-4 d-none" id="dateInputField">
+        <input type="date" id="dateInput">
+      </div>
+    </form>
+    <div class="date ml-4">
+        <button type="button" onclick="showDateInput();" class="btn">
+            <span class="h1 text-dark" style="text-shadow: -4px 5px 2px rgba(150, 150, 150, 1);">
+                <i class="far fa-calendar-alt"></i>
+            </span>
+        </button>
+    </div>
+    <div class="today ml-4 mt-2">
+        <span class="h1 text-dark" id="showDateField">2019/11/24</span>
+    </div>
+    <div class="new ml-3">
+        <a class="nav-link" href="/account/new"><span class="h1 text-dark" style="text-shadow: -4px 5px 2px rgba(150, 150, 150, 1);"><i class="fas fa-plus-circle"></i></span></a>
+    </div>
+</div>
+{{!-- list --}}
+<div class="container col-6 mt-4">
+  <div class="list-group">
+      <button type="button" class="list-group-item list-group-item-action active d-flex justify-content-between">
+        <div class="text-monospace">
+          <i class="far fa-calendar-alt"></i>日期
+        </div>
+        <div class="text-monospace">
+          <span class="badge badge-pill badge-dark font-weight-normal">
+            $141
+          </span>
+        </div>
+        <div class="text-monospace">
+          類別
+        </div>
+        <div class="text-monospace">
+          <i class="fas fa-trash"></i>刪除
+        </div>
+      </button>
+  </div>
+</div>
+
+
+
+<script>
+    const dateInputField = document.getElementById('dateInputField');
+    const dateInput = document.getElementById('dateInput');
+    const showDateField = document.getElementById('showDateField');
+
+    function showDateInput(){
+        dateInputField.classList.toggle('d-none')
+    }
+
+    dateInput.addEventListener('input', function(){
+      showDateField.innerHTML = dateInput.value;
+    })
+</script>
