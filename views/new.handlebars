@@ -1,50 +1,53 @@
 <div class="container col-4 mt-4">
     <form action="/account/new" method="POST">
+        <div class="date-input mb-4" id="dateInputField">
+            <input type="date" id="dateInput" name="date" value="{{{list.date}}}">
+        </div>
         <div class="form-group">
-            <input type="number" class="form-control" id="formGroupExampleInput" placeholder="$" name="price">
+            <input type="number" class="form-control" id="formGroupExampleInput" placeholder="$" name="price" value="{{{list.price}}}">
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio1" value="food" name="category">
+            <input class="form-check-input" type="radio" id="inlineRadio1" value="food" name="category" {{#if category.food}} checked {{/if}}>
             <label class="form-check-label" for="inlineRadio1">
                 <span><i class="fas fa-bread-slice"></i>食物</span>
             </label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio2" value="cloth" name="category">
+            <input class="form-check-input" type="radio" id="inlineRadio2" value="cloth" name="category" {{#if category.cloth}} checked {{/if}}>
             <label class="form-check-label" for="inlineRadio2">
                 <span><i class="fas fa-tshirt"></i>衣服</span>
             </label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio3" value="drink" name="category">
+            <input class="form-check-input" type="radio" id="inlineRadio3" value="drink" name="category" {{#if category.drink}} checked {{/if}}>
             <label class="form-check-label" for="inlineRadio3">
                 <span><i class="fas fa-cocktail"></i>飲料</span>
             </label>
         </div>
         <div class="form-group mt-2">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="描述" name="description"></textarea>
+            <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="描述" name="description" value="{{{list.description}}}"></input>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio1" value="creditcard" name="payment">
+            <input class="form-check-input" type="radio" id="inlineRadio1" value="creditcard" name="payment" {{#if payment.creditcard}} checked {{/if}}>
             <label class="form-check-label" for="inlineRadio1">
                 <span><i class="far fa-credit-card"></i>信用卡</span>
             </label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio2" value="cash" name="payment">
+            <input class="form-check-input" type="radio" id="inlineRadio2" value="cash" name="payment" {{#if payment.cash}} checked {{/if}}>
             <label class="form-check-label" for="inlineRadio2">
                 <span><i class="fas fa-money-bill"></i>現金</span>
             </label>
         </div>
         <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="monthlyCheck">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="monthlyCheck" {{#if list.monthlyCheck}} checked {{/if}}>
             <label class="form-check-label" for="defaultCheck1">
                 將其設為每月固定開銷
             </label>
         </div>
         <div class="btn-wrapper d-flex justify-content-between mt-4">
             <div class="btn-home">
-                <a href="/"><button class="btn btn-secondary">首頁</button></a>
+                <a href="/"><button type="button" class="btn btn-secondary">首頁</button></a>
             </div>
             <div class="btn-save d-flex">
                 <div class="btn-reset mr-2">

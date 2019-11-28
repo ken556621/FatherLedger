@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
 const Account = require('../models/account');
 const moment = require('moment');
 
 
+
 //new
 router.get('/new', (req, res) => {
-    res.render('new');
+    Account.findOne((err, list) => {
+        const selectDate = req.body.date;
+        if(err) return console.log(err)
+        return res.render('new', { selectDate });
+    })
 })
 
 router.post('/new', (req, res, next) => {
@@ -16,11 +20,64 @@ router.post('/new', (req, res, next) => {
         price: req.body.price,
         category: req.body.category,
         description: req.body.description,
-        payment: req.body.payment 
+        payment: req.body.payment,
+        date: req.body.date,
+        monthlyCheck:req.body.monthlyCheck
     })
     newList.save(err => {
         if(err) console.log(err)
         return res.redirect('/');
+    })
+})
+
+//select date to see
+router.post('/selectDate', (req, res) => {
+    console.log(req.body.date)
+    Account.find({ date: req.body.date }, (err, list) => {
+        const date = list[0].date;
+        if(err) return console.log(err)
+        return res.render('index', { list, date });
+    })
+})
+
+//edit
+router.get('/edit/:id', (req, res) => {
+    Account.findById({ _id: req.params.id }, (err, list) => {
+        console.log(list)
+        const category = {
+            food: false,
+            cloth: false,
+            drink: false
+        }
+        const payment = {
+            creditcard: false,
+            cash: false
+        }
+        if(list.category === "food"){
+            category.food = true;
+        }else if(list.category === "cloth"){
+            category.cloth = true;
+        }else if(list.category === "drink"){
+            category.drink = true;
+        }
+        if(list.payment === "creditcard"){
+            payment.creditcard = true
+        }else if(list.payment === "cash"){
+            payment.cash = true
+        }
+        if(err) return console.log(err)
+        return res.render('new', { list, category, payment })
+    })
+})
+
+//delete
+router.get('/delete/:id', (req, res) => {
+    Account.findById({ _id: req.params.id }, (err, list) => {
+        if(err) return console.log(err)
+        return list.remove(err => {
+            if(err) return console.log(err)
+            res.redirect('/');
+        })
     })
 })
 
