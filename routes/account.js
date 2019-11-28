@@ -31,9 +31,9 @@ router.post('/new', (req, res, next) => {
 })
 
 //select date to see
-router.post('/selectDate', (req, res) => {
-    console.log(req.body.date)
-    Account.find({ date: req.body.date }, (err, list) => {
+router.get('/selectDate', (req, res) => {
+    console.log(req.query)
+    Account.find({ date: req.query.date }, (err, list) => {
         const date = list[0].date;
         if(err) return console.log(err)
         return res.render('index', { list, date });
@@ -41,7 +41,7 @@ router.post('/selectDate', (req, res) => {
 })
 
 //edit
-router.get('/edit/:id', (req, res) => {
+router.put('/:id/edit', (req, res) => {
     Account.findById({ _id: req.params.id }, (err, list) => {
         console.log(list)
         const category = {
@@ -71,7 +71,7 @@ router.get('/edit/:id', (req, res) => {
 })
 
 //delete
-router.get('/delete/:id', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
     Account.findById({ _id: req.params.id }, (err, list) => {
         if(err) return console.log(err)
         return list.remove(err => {

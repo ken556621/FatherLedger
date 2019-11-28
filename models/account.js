@@ -9,10 +9,7 @@ const accountListSchema = new Schema({
     description: String,
     date: String,
     payment: String,
-    monthlyCheck:{
-        type: Boolean,
-        default: false  
-    }    
+    monthlyCheck: String
 });
 
 module.exports = mongoose.model('accountlist', accountListSchema)

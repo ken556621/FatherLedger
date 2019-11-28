@@ -1,6 +1,6 @@
 {{!-- button --}}
 <div class="btn-wrapper d-flex justify-content-center m-4">
-    <form action="/account/selectDate" method="POST">
+    <form action="/account/selectDate" method="GET">
       <div class="date-input mt-4 d-none" id="dateInputField">
         <button class="btn btn-secondary mr-1" type="submit">選擇</button>
         <input type="date" id="dateInput" name="date">
@@ -28,7 +28,7 @@
 <div class="container col-6 mt-4">
   <div class="list-group">
       {{#each list}}
-      <button type="button" class="list-group-item list-group-item-action active d-flex justify-content-between">
+      <div class="list-group-item list-group-item-action active d-flex justify-content-between">
         <div class="text-monospace">
           <i class="far fa-calendar-alt"></i>{{{this.date}}}
         </div>
@@ -40,11 +40,15 @@
         <div class="text-monospace">
           {{{this.category}}}
         </div>
-        <div class="text-monospace">
-          <a href="/account/edit/{{{this.id}}}" class="text-danger"><i class="fas fa-edit"></i>修改</a>
-          <a href="/account/delete/{{{this.id}}}" class="text-danger"><i class="fas fa-trash"></i>刪除</a>
+        <div class="text-monospace d-flex">
+          <form action="/account/{{{this.id}}}/edit?_method=PUT" method="POST">
+            <button class="btn" type="submit"><i class="fas fa-edit"></i>修改</button>
+          </form>
+          <form action="/account/{{{this.id}}}/delete?_method=DELETE" method="POST">
+            <button class="btn" type="submit"><i class="fas fa-trash"></i>刪除</button>
+          </form>
         </div>
-      </button>
+      </div>
       {{/each}}
   </div>
 </div>

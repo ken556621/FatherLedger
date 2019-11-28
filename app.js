@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
+const methodOverride = require('method-override');
 const app = express();
 const port = 3000;
 
@@ -11,6 +12,7 @@ const port = 3000;
 app.engine('handlebars', exphbs({ defaultLayout:'main' }));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 
 
 //connect to mongodb
