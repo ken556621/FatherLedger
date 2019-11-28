@@ -1,5 +1,5 @@
 const Chart = require('chart.js');
-const ctx = document.getElementById('totalExpense');
+const ctx = document.getElementById('totalExpense').getContext('2d');
 
 //totalExpense
 const pieChart = new Chart(ctx, {
@@ -29,4 +29,3 @@ const pieChart = new Chart(ctx, {
     }
 })
 
-module.exports = pieChart
