@@ -47,7 +47,9 @@ router.put('/:id/edit', (req, res) => {
         const category = {
             food: false,
             cloth: false,
-            drink: false
+            drink: false,
+            rent: false,
+            traffic: false
         }
         const payment = {
             creditcard: false,
@@ -59,6 +61,10 @@ router.put('/:id/edit', (req, res) => {
             category.cloth = true;
         }else if(list.category === "drink"){
             category.drink = true;
+        }else if(list.category === "rent"){
+            category.rent = true;
+        }else if(list.category === "traffic"){
+            category.traffic = true;
         }
         if(list.payment === "creditcard"){
             payment.creditcard = true

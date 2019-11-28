@@ -52,7 +52,42 @@
       {{/each}}
   </div>
 </div>
+{{!-- chart --}}
+<div class="container col-6 mt-4 text-center">
+  <div class="selectDateTitle">
+    <h1>期間選擇</h1>
+  </div>
+  <div class="selectDateOption">
+    <ul class="nav nav-pills justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="#">週</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">月</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">半年</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">自訂</a>
+      </li>
+    </ul>
+  </div>
+</div>
+{{!-- chart display --}}
+<div class="chart-wrapper d-flex">
+  <div class="chart1 col-4">
+    <canvas id="totalExpense" width="300" height="300"></canvas>
+  </div>
+  <div class="chart2 col-4">
+    <canvas id="graduallyExpense" width="300" height="300"></canvas>
+  </div>
+  <div class="chart3 col-4" id="reminder">
+
+  </div>
+</div>
 
 
 
+<script src="http://localhost:3000/javascript/chart.js"></script>
 <script src="http://localhost:3000/javascript/index.js"></script>

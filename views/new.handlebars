@@ -24,6 +24,18 @@
                 <span><i class="fas fa-cocktail"></i>飲料</span>
             </label>
         </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineRadio4" value="rent" name="category" {{#if category.rent}} checked {{/if}}>
+            <label class="form-check-label" for="inlineRadio4">
+                <span><i class="fas fa-home"></i>房租</span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineRadio5" value="traffic" name="category" {{#if category.traffic}} checked {{/if}}>
+            <label class="form-check-label" for="inlineRadio5">
+                <span><i class="fas fa-car"></i>交通</span>
+            </label>
+        </div>
         <div class="form-group mt-2">
             <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="描述" name="description" {{#if list}}value="{{{list.description}}}"{{/if}}></input>
         </div>
