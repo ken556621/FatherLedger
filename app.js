@@ -45,6 +45,8 @@ app.use(express.static('public'));
 //Router
 app.use('/', require('./routes/home'));
 app.use('/account', require('./routes/account'));
+app.use('/chart', require('./routes/chart'));
+app.use('/users', require('./routes/user'));
 
 
 

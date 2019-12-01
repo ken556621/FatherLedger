@@ -7,7 +7,9 @@ const accountListSchema = new Schema({
     },
     category: String,
     description: String,
-    date: String,
+    date: {
+        type: Number
+    },
     payment: String,
     monthlyCheck: String
 });

@@ -1,0 +1,30 @@
+<div class="container bg-white rounded col-4 mt-4">
+    <div class="picture text-center">
+        <img src="#" width="120" height="120" class="d-inline-block align-top" alt="我的餐廳清單">
+    </div>
+    <form action='/users/login' method="POST">
+        <fieldset>
+        <div class="form-group">
+            <label for="login-field-Email1">Email address</label>
+            <input type="email" class="form-control" id="login-field-Email1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="login-field-Password1">Password</label>
+            <input type="password" class="form-control" id="login-field-Password1" placeholder="Password" name="password">
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        </fieldset>
+        <div class="modal-footer justify-content-between">
+            <div>
+                <a class="nav-link active h3" href="/users/register">Register</a>
+            </div>
+            <div>
+                <a class="h3 text-primary" href="/auth/facebook"><i class="fab fa-facebook-square"></i></a>
+            </div>
+            <div>
+                <a href="/">homepage</a>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+    </form>
+</div>

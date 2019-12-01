@@ -15,13 +15,13 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res, next) => {
-    console.log(req.body)
+    console.log(Number(req.body.date.split('-').join('')))
     const newList = new Account({
         price: req.body.price,
         category: req.body.category,
         description: req.body.description,
         payment: req.body.payment,
-        date: req.body.date,
+        date: Number(req.body.date.split('-').join('')),
         monthlyCheck:req.body.monthlyCheck
     })
     newList.save(err => {
