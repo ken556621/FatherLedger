@@ -2,19 +2,20 @@ const express = require('express');
 const router = express.Router();
 const Account = require('../models/account');
 const moment = require('moment');
+const { authenticated } = require('../config/auth');
 
 
 
 //new
-router.get('/new', (req, res) => {
-    Account.findOne((err, list) => {
+router.get('/new', authenticated, (req, res) => {
+    Account.findOne({ userId: req.user._id }, (err, list) => {
         const selectDate = req.body.date;
         if(err) return console.log(err)
         return res.render('new', { selectDate });
     })
 })
 
-router.post('/new', (req, res, next) => {
+router.post('/new', authenticated, (req, res, next) => {
     console.log(Number(req.body.date.split('-').join('')))
     const newList = new Account({
         price: req.body.price,
@@ -22,7 +23,8 @@ router.post('/new', (req, res, next) => {
         description: req.body.description,
         payment: req.body.payment,
         date: Number(req.body.date.split('-').join('')),
-        monthlyCheck:req.body.monthlyCheck
+        monthlyCheck:req.body.monthlyCheck,
+        userId: req.user._id
     })
     newList.save(err => {
         if(err) console.log(err)
@@ -31,9 +33,9 @@ router.post('/new', (req, res, next) => {
 })
 
 //select date to see
-router.get('/selectDate', (req, res) => {
+router.get('/selectDate', authenticated, (req, res) => {
     console.log(req.query)
-    Account.find({ date: req.query.date }, (err, list) => {
+    Account.find({ date: req.query.date, userId: req.user._id }, (err, list) => {
         const date = list[0].date;
         if(err) return console.log(err)
         return res.render('index', { list, date });
@@ -41,8 +43,8 @@ router.get('/selectDate', (req, res) => {
 })
 
 //edit
-router.put('/:id/edit', (req, res) => {
-    Account.findById({ _id: req.params.id }, (err, list) => {
+router.put('/:id/edit', authenticated, (req, res) => {
+    Account.findById({ _id: req.params.id, userId: req.user._id }, (err, list) => {
         console.log(list)
         const category = {
             food: false,
@@ -77,8 +79,8 @@ router.put('/:id/edit', (req, res) => {
 })
 
 //delete
-router.delete('/:id/delete', (req, res) => {
-    Account.findById({ _id: req.params.id }, (err, list) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
+    Account.findById({ _id: req.params.id, userId: req.user._id }, (err, list) => {
         if(err) return console.log(err)
         return list.remove(err => {
             if(err) return console.log(err)

@@ -11,7 +11,13 @@ const accountListSchema = new Schema({
         type: Number
     },
     payment: String,
-    monthlyCheck: String
+    monthlyCheck: String,
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        index: true,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('accountlist', accountListSchema)

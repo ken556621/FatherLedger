@@ -6,13 +6,18 @@ const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
 const app = express();
+const flash = require('connect-flash');
 const port = 3000;
+if (process.env.NODE_ENV !== 'production') {      
+    require('dotenv').config()                     
+}
 
 
 app.engine('handlebars', exphbs({ defaultLayout:'main' }));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
+app.use(flash());
 
 
 //connect to mongodb
@@ -39,6 +44,17 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./config/passport')(passport);
+
+//將訊息透過 res.locals 交給 views
+app.use((req, res, next) => {
+    res.locals.user = req.user;
+    res.locals.isAuthenticated = req.isAuthenticated();
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.warning_msg = req.flash('warning_msg');
+    next();
+})
+
 //public file
 app.use(express.static('public'));
 
@@ -47,6 +63,7 @@ app.use('/', require('./routes/home'));
 app.use('/account', require('./routes/account'));
 app.use('/chart', require('./routes/chart'));
 app.use('/users', require('./routes/user'));
+app.use('/auth', require('./routes/auth'));
 
 
 
