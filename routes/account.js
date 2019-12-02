@@ -26,6 +26,12 @@ router.post('/new', authenticated, (req, res, next) => {
         monthlyCheck:req.body.monthlyCheck,
         userId: req.user._id
     })
+    if(req.body.date === ''){
+        errorMessage = true;
+        return res.render('new', { errorMessage: errorMessage });
+    }else{
+        errorMessage = false;
+    }
     newList.save(err => {
         if(err) console.log(err)
         return res.redirect('/');

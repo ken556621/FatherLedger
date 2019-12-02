@@ -28,12 +28,13 @@
     color: #ffffff;
 }
 
-.sortbydate{
+.display-wrapper{
     position: absolute;
-    right: 5%;
+    right:20%;
+    top:105%;
 }
 
-.sortbydate a:hover{
-    background-color: rgba(150, 150, 150, 1);
+.sortbydate, .sortbyPrice{
+    border-radius: 5px;
 }
 

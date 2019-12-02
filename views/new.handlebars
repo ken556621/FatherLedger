@@ -5,6 +5,7 @@
     <form action="/account/new" method="POST">
         <div class="date-input mb-4" id="dateInputField">
             <input class="form-control" type="date" id="dateInput" name="date" {{#if list}}value="{{{list.date}}}"{{/if}}>
+            {{#if errorMessage}}<small class="form-text text-danger">Must be filled in!</small>{{/if}}
         </div>
         <div class="form-group">
             <input type="number" class="form-control" id="formGroupExampleInput" placeholder="$" name="price" {{#if list}}value="{{{list.price}}}"{{/if}}>

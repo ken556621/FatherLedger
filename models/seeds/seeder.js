@@ -18,35 +18,35 @@ db.once('open', () => {
             category: 'food',
             date: `201911${i}`,
             payment: 'cash',
-            userId: "5de3cab3a359256356eb63b1"
+            userId: "5de4a961251bcd763ad7cc21"
         })
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
             category: 'cloth',
             date: `201911${i}`,
             payment: 'cash',
-            userId: "5de3cab3a359256356eb63b1"
+            userId: "5de4a961251bcd763ad7cc21"
         })
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
             category: 'drink',
             date: `201911${i}`,
             payment: 'cash',
-            userId: "5de3cab3a359256356eb63b1"
+            userId: "5de4a961251bcd763ad7cc21"
         })
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
             category: 'rent',
             date: `201911${i}`,
             payment: 'cash',
-            userId: "5de3cab3a359256356eb63b1"
+            userId: "5de4a961251bcd763ad7cc21"
         })
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
             category: 'traffic',
             date: `201911${i}`,
             payment: 'cash',
-            userId: "5de3cab3a359256356eb63b1"
+            userId: "5de4a961251bcd763ad7cc21"
         })
     }
     console.log('done')
