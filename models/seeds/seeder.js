@@ -12,7 +12,7 @@ db.on('error', () => {
 db.once('open', () => {
     console.log('db connected!');
 
-    for(let i = 23;i < 30;i++){
+    for(let i = 10;i < 23;i++){
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
             category: 'food',

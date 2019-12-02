@@ -1,6 +1,8 @@
 const ctx = document.getElementById('totalExpense');
 const ctx2 = document.getElementById('graduallyExpense');
 const weekChart = document.getElementById('week-chart');
+const monthChart = document.getElementById('month-chart');
+const halfYearChart = document.getElementById('halfyear-chart');
 
 
 
@@ -10,7 +12,6 @@ const mainColor = ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 
 
 function getWeekData(){
     axios.get('http://localhost:3000/chart/week').then(res => {
-        console.log(res.data);
         //piechart
         const weekData = res.data;
         const eachExpense = [];
@@ -19,9 +20,52 @@ function getWeekData(){
         drawPieChart(weekSession);
         //linechart
         const categories = [];
+        const date = [];
         weekData.forEach(list => categories.push((list.sort((a, b) => a.date - b.date))));
+        weekData[0].filter(list => date.push(list.date));
         const weekSession2 = generateGraduallyExpense(categories);
-        drawLineChart(weekSession2)
+        const labels = date.sort().slice(0, 7);
+        drawLineChart(weekSession2, labels)
+        
+    }).catch(err => console.log(err));
+}
+
+function getMonthData(){
+    axios.get('http://localhost:3000/chart/month').then(res => {
+        //piechart
+        const monthData = res.data;
+        const eachExpense = [];
+        monthData.forEach(eachData => eachExpense.push(sumTotalExpense(eachData)));
+        const weekSession = generateTotalExpense(eachExpense);
+        drawPieChart(weekSession);
+        //linechart
+        const categories = [];
+        const date = [];
+        monthData.forEach(list => categories.push((list.sort((a, b) => a.date - b.date))));
+        monthData[0].filter(list => date.push(list.date));
+        const monthSession2 = generateGraduallyExpense(categories);
+        const labels = date.sort().slice(0, 7);
+        drawLineChart(monthSession2, labels)
+        
+    }).catch(err => console.log(err));
+}
+
+function getHalfYearData(){
+    axios.get('http://localhost:3000/chart/halfyear').then(res => {
+        //piechart
+        const halfYearData = res.data;
+        const eachExpense = [];
+        halfYearData.forEach(eachData => eachExpense.push(sumTotalExpense(eachData)));
+        const weekSession = generateTotalExpense(eachExpense);
+        drawPieChart(weekSession);
+        //linechart
+        const categories = [];
+        const date = [];
+        halfYearData.forEach(list => categories.push((list.sort((a, b) => a.date - b.date))));
+        halfYearData[0].filter(list => date.push(list.date));
+        const halfYearSession2 = generateGraduallyExpense(categories);
+        const labels = date.sort().slice(0, 7);
+        drawLineChart(halfYearSession2, labels)
         
     }).catch(err => console.log(err));
 }
@@ -32,8 +76,6 @@ function sumTotalExpense(eachCategory){
     eachCategory.forEach(list => total += Number(list.price));
     return total;
 }
-
-
 
 
 //Generate totalExpense dataset
@@ -57,7 +99,6 @@ function generateTotalExpense(eachCategoryExpense){
 }
 
 
-
 //Generate graduallyExpense dataset
 function generateGraduallyExpense(categories){
     const result = [];
@@ -77,7 +118,6 @@ function generateGraduallyExpense(categories){
 }
 
 
-
 //draw
 function drawPieChart(eachSession){
     const pieChart = new Chart(ctx, {
@@ -92,11 +132,12 @@ function drawPieChart(eachSession){
     return pieChart
 }
 
-function drawLineChart(eachSession){
+
+function drawLineChart(eachSession, labels){
     const lineChart = new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            labels: labels,
             datasets: eachSession
         },
         options: {
@@ -106,17 +147,6 @@ function drawLineChart(eachSession){
     return lineChart
 }
 
-
-// //graduallyExpense
-// const lineChart = new Chart(ctx2, {
-//     type: 'line',
-//     data: {
-//         labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-//         datasets: generateGraduallyExpense(eachDayExpense)
-//     },
-//     options: {
-        
-//     }
-// })
-
 weekChart.addEventListener('click', getWeekData);
+monthChart.addEventListener('click', getMonthData);
+halfYearChart.addEventListener('click', getMonthData);

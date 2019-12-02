@@ -34,12 +34,11 @@ router.post('/new', authenticated, (req, res, next) => {
 
 //select date to see
 router.get('/selectDate', authenticated, (req, res) => {
-    console.log(req.query)
-    Account.find({ date: req.query.date, userId: req.user._id }, (err, list) => {
+    Account.find({ date: moment(req.query.date).format('YYYYMMDD'), userId: req.user._id }, (err, list) => {
         const date = list[0].date;
         if(err) return console.log(err)
-        return res.render('index', { list, date });
-    })
+        return res.render('index', { paginationData: list, date });
+    }) 
 })
 
 //edit

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/spacelab/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost:3000/stylesheet/index.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Accounting</title>
 </head>
@@ -14,15 +16,16 @@
         <!-- Image and text -->
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="/">
-                阿爸私房錢
+            <img src="http://localhost:3000/img/logo.png" width="80" height="80" alt="logo">
+                <span class="text-dark">阿爸私房錢</span> 
             </a>
             {{#if isAuthenticated}}
-            <span class="navbar-text">
-                <a class="nav-link" href="/users/logout"><i class="fas fa-sign-in-alt">登出</i></a>
+            <span class="navbar-text logout">
+                <a class="nav-link text-dark h5" href="/users/logout"><i class="fas fa-sign-in-alt">登出</i></a>
             </span>
             {{else}}
-            <span class="navbar-text">
-                <a class="nav-link" href="/users/login"><i class="fas fa-sign-in-alt">登入</i></a>
+            <span class="navbar-text login">
+                <a class="nav-link text-dark h5" href="/users/login"><i class="fas fa-sign-in-alt">登入</i></a>
             </span>
             {{/if}}
         </nav>

@@ -1,0 +1,30 @@
+.modify:hover{
+    background-color: #ffffff;
+}
+
+.delete:hover{
+    background-color: #ffffff;
+}
+
+
+.date-icon, .new-icon{
+    border-radius:50%
+}
+
+.date-icon:hover, .new-icon:hover{
+    background-color: rgba(150, 150, 150, 1);
+}
+
+
+.login, .logout{
+    border-radius: 5px;
+}
+
+.login:hover, .logout:hover{
+    background-color: rgba(150, 150, 150, 1);
+}
+
+.login:hover i, .logout:hover i{
+    color: #ffffff;
+}
+
