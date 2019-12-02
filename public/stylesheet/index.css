@@ -28,3 +28,12 @@
     color: #ffffff;
 }
 
+.sortbydate{
+    position: absolute;
+    right: 5%;
+}
+
+.sortbydate a:hover{
+    background-color: rgba(150, 150, 150, 1);
+}
+
