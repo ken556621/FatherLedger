@@ -1,3 +1,4 @@
+
 .modify:hover{
     background-color: #ffffff;
 }
@@ -29,9 +30,8 @@
 }
 
 .display-wrapper{
-    position: absolute;
-    right:20%;
-    top:105%;
+    position: relative;
+    left: 10%;
 }
 
 .sortbydate, .sortbyPrice{
