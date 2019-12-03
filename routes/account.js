@@ -48,9 +48,8 @@ router.get('/selectDate', authenticated, (req, res) => {
 })
 
 //edit
-router.put('/:id/edit', authenticated, (req, res) => {
-    Account.findById({ _id: req.params.id, userId: req.user._id }, (err, list) => {
-        console.log(list)
+router.get('/:id/edit', authenticated, (req, res) => {
+    Account.findById({ _id: req.params.id, userId: req.user._id }, (err, list) => { 
         const category = {
             food: false,
             cloth: false,
@@ -62,6 +61,8 @@ router.put('/:id/edit', authenticated, (req, res) => {
             creditcard: false,
             cash: false
         }
+        const date = moment(`${list.date}`).format('YYYY-MM-DD');
+
         if(list.category === "food"){
             category.food = true;
         }else if(list.category === "cloth"){
@@ -78,8 +79,35 @@ router.put('/:id/edit', authenticated, (req, res) => {
         }else if(list.payment === "cash"){
             payment.cash = true
         }
+        
         if(err) return console.log(err)
-        return res.render('new', { list, category, payment })
+        return res.render('edit', { list, category, payment, date })
+    })
+})
+
+router.put('/:id/edit', authenticated, (req, res) => {
+    Account.findById({ _id: req.params.id, userId: req.user._id }, (err, list) => { 
+
+        if(err) return console.log(err)
+
+        if(req.body.date === ''){
+            errorMessage = true;
+            return res.render('edit', { errorMessage: errorMessage });
+        }
+
+        list.date = moment(`${list.date}`).format('YYYY-MM-DD');
+        list.price = req.body.price;
+        list.category = req.body.category;
+        list.description = req.body.description;
+        list.payment = req.body.payment;
+        list.date = Number(req.body.date.split('-').join(''));
+        list.monthlyCheck =req.body.monthlyCheck;
+        list.userId = req.user._id;
+
+        list.save(err => {
+            console.log(err)
+            return res.redirect('/')
+        })
     })
 })
 

@@ -2,7 +2,7 @@
     <div class="logo text-center mb-4">
         <img src="http://localhost:3000/img/logo.png" width="120" height="120" alt="logo">
     </div>
-    <form action="/account/new" method="POST">
+    <form action="/account/{{{list.id}}}/edit?_method=PUT" method="POST">
         <div class="date-input mb-4" id="dateInputField">
             <input class="form-control" type="date" id="dateInput" name="date" {{#if list}}value="{{{date}}}"{{/if}}>
             {{#if errorMessage}}<small class="form-text text-danger">Must be filled in!</small>{{/if}}

@@ -3,6 +3,7 @@ const ctx2 = document.getElementById('graduallyExpense');
 const weekChart = document.getElementById('week-chart');
 const monthChart = document.getElementById('month-chart');
 const halfYearChart = document.getElementById('halfyear-chart');
+const customChart = document.getElementById('custom-chart');
 
 
 
@@ -66,6 +67,26 @@ function getHalfYearData(){
         const halfYearSession2 = generateGraduallyExpense(categories);
         const labels = date.sort().slice(0, 7);
         drawLineChart(halfYearSession2, labels)
+        
+    }).catch(err => console.log(err));
+}
+
+function getCustomData(){
+    axios.get('http://localhost:3000/chart/custom?startDate=2019-11-01&endDate=2019-11-25').then(res => {
+        //piechart
+        const customData = res.data;
+        const eachExpense = [];
+        customData.forEach(eachData => eachExpense.push(sumTotalExpense(eachData)));
+        const customSession = generateTotalExpense(eachExpense);
+        drawPieChart(customSession);
+        //linechart
+        const categories = [];
+        const date = [];
+        customData.forEach(list => categories.push((list.sort((a, b) => a.date - b.date))));
+        customData[0].filter(list => date.push(list.date));
+        const customSession2 = generateGraduallyExpense(categories);
+        const labels = date.sort().slice(0, 7);
+        drawLineChart(customSession2, labels)
         
     }).catch(err => console.log(err));
 }
@@ -150,3 +171,6 @@ function drawLineChart(eachSession, labels){
 weekChart.addEventListener('click', getWeekData);
 monthChart.addEventListener('click', getMonthData);
 halfYearChart.addEventListener('click', getMonthData);
+customChart.addEventListener('click', function(event){
+    console.log('hello')
+})
