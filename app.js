@@ -21,7 +21,7 @@ app.use(flash());
 
 
 //connect to mongodb
-mongoose.connect('mongodb://localhost/account', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/account', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 const db = mongoose.connection;
 
@@ -68,6 +68,6 @@ app.use('/auth', require('./routes/auth'));
 
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Server is listening on http://localhost:${port}`);
 })
