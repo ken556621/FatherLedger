@@ -51,7 +51,6 @@ router.get('/halfyear', (req,res) => {
 router.get('/custom', (req,res, next) => {
     const startDate = Number(moment(req.query.startDate).format('YYYYMMDD'));
     const endDate = Number(moment(req.query.endDate).format('YYYYMMDD'));
-    console.log({startDate, endDate})
     Account.find({ date: { $gte: startDate, $lte: endDate }, userId: req.user._id }, (err, lists) => {
         if(err) console.log(err)
         const food = lists.filter(list => list.category === 'food');
@@ -60,7 +59,6 @@ router.get('/custom', (req,res, next) => {
         const rent = lists.filter(list => list.category === 'rent');
         const traffic = lists.filter(list => list.category === 'traffic');
         const category = [food, cloth, drink, rent, traffic];
-        console.log(lists)
         res.json(category);
     })
 })

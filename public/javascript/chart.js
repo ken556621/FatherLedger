@@ -4,6 +4,8 @@ const weekChart = document.getElementById('week-chart');
 const monthChart = document.getElementById('month-chart');
 const halfYearChart = document.getElementById('halfyear-chart');
 const customChart = document.getElementById('custom-chart');
+const startDate = document.getElementById('startDate');
+const endDate = document.getElementById('endDate');
 
 
 
@@ -72,8 +74,8 @@ function getHalfYearData(){
     }).catch(err => console.log(err));
 }
 
-function getCustomData(){
-    axios.get('http://localhost:3000/chart/custom?startDate=2019-11-01&endDate=2019-11-25').then(res => {
+function getCustomData(startDate, endDate){
+    axios.get(`http://localhost:3000/chart/custom?startDate=${startDate}&endDate=${endDate}`).then(res => {
         //piechart
         const customData = res.data;
         const eachExpense = [];
@@ -173,5 +175,5 @@ weekChart.addEventListener('click', getWeekData);
 monthChart.addEventListener('click', getMonthData);
 halfYearChart.addEventListener('click', getHalfYearData);
 customChart.addEventListener('click', function(event){
-    console.log('hello')
+    getCustomData(startDate.value, endDate.value);
 })

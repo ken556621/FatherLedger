@@ -138,8 +138,7 @@
     </ul>
   </div>
 </div>
-      {{!-- alert message for delete --}}
-        <form action="/chart/custom" method="GET">
+      {{!-- dialog message for customize date select --}}
           <div class="modal fade" id="costum-btn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -155,18 +154,17 @@
                     <input class="form-control col-5" type="date" id="startDate" name="startDate">
                   </div>
                   <div class="d-flex justify-content-around mt-4">
-                    <label for="startDate">結束日期</label>
-                    <input class="form-control col-5" type="date" id="startDate" name="endDate">
+                    <label for="endDate">結束日期</label>
+                    <input class="form-control col-5" type="date" id="endDate" name="endDate">
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">先不選</button>
-                    <button type="submit" class="btn btn-primary" id="custom-chart">確定</button>
+                    <button type="button" class="btn btn-primary" id="custom-chart" data-dismiss="modal">確定</button>
                 </div>
               </div>
             </div>
           </div>
-        </form>
 {{!-- chart display --}}
 <div class="chart-wrapper d-flex flex-wrap justify-content-center">
   <div class="chart1">
