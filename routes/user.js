@@ -40,6 +40,7 @@ router.post('/register', (req, res) => {
             password,
             password2
          })
+         return
     }
     User.findOne({ email: email }).then(user => {
         //已被註冊
