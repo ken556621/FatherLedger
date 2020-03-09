@@ -1,7 +1,4 @@
 <div class="container col-4 mt-4">
-    <div class="logo text-center mb-4">
-        <img src="http://localhost:3000/img/logo.png" width="120" height="120" alt="logo">
-    </div>
     <form action="/account/new" method="POST">
         <div class="date-input mb-4" id="dateInputField">
             <input class="form-control" type="date" id="dateInput" name="date" {{#if list}}value="{{{date}}}"{{/if}}>

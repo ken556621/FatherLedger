@@ -9,11 +9,12 @@
 
 
 .date-icon, .new-icon{
-    border-radius:50%
+    border-radius:50%;
+    transition: all .3s ease-in;
 }
 
 .date-icon:hover, .new-icon:hover{
-    background-color: rgba(150, 150, 150, 1);
+    background-color: #e8581c;
 }
 
 
@@ -36,5 +37,10 @@
 
 .sortbydate, .sortbyPrice{
     border-radius: 5px;
+}
+
+/* chart */
+.chart1, .chart2{
+    
 }
 

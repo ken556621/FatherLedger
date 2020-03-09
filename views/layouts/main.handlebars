@@ -16,16 +16,16 @@
         <!-- Image and text -->
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="/">
-            <img src="http://localhost:3000/img/logo.png" width="80" height="80" alt="logo">
-                <span class="text-dark">阿爸私房錢</span> 
+            <img src="http://localhost:3000/img/logo.png" width="50" height="50" alt="logo">
+                <span class="text-dark h6">阿爸私房錢</span> 
             </a>
             {{#if isAuthenticated}}
             <span class="navbar-text logout">
-                <a class="nav-link text-dark h5" href="/users/logout"><i class="fas fa-sign-in-alt">登出</i></a>
+                <a class="nav-link text-dark h6" href="/users/logout"><i class="fas fa-sign-in-alt">登出</i></a>
             </span>
             {{else}}
             <span class="navbar-text login">
-                <a class="nav-link text-dark h5" href="/users/login"><i class="fas fa-sign-in-alt">登入</i></a>
+                <a class="nav-link text-dark h6" href="/users/login"><i class="fas fa-sign-in-alt">登入</i></a>
             </span>
             {{/if}}
         </nav>

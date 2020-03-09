@@ -1,36 +1,38 @@
 {{!-- button --}}
 <div class="btn-wrapper d-flex justify-content-center m-4">
-    <form action="/account/selectDate" method="GET">
-      <div class="date-input mt-4 d-none" id="dateInputField">
-        <button class="btn btn-secondary mr-1" type="submit">選擇</button>
-        <input type="date" id="dateInput" name="date">
-      </div>
-    </form>
-    <div class="date ml-4 date-icon">
-        <button type="button" onclick="showDateInput();" class="btn">
-            <span class="h1 text-dark" style="text-shadow: -4px 5px 2px rgba(150, 150, 150, 1);">
+    <div class="date ml-4 date-icon" id="dateBtn">
+        <button type="button" class="btn">
+            <span class="h5 text-dark">
                 <i class="far fa-calendar-alt"></i>
             </span>
         </button>
     </div>
     <div class="today ml-4 mt-2">
         {{#if date}}
-        <span class="h1 text-dark" id="showDateField">{{{date}}}</span>
+        <span class="h5 text-dark" id="showDateField">{{{date}}}</span>
         {{else}}
-        <span class="h1 text-dark" id="showDateField">{{{today}}}</span>
+        <span class="h5 text-dark" id="showDateField">{{{today}}}</span>
         {{/if}}
     </div>
     <div class="new ml-3 new-icon">
-        <a class="nav-link" href="/account/new"><span class="h1 text-dark" style="text-shadow: -4px 5px 2px rgba(150, 150, 150, 1);"><i class="fas fa-plus-circle"></i></span></a>
+        <a class="nav-link" href="/account/new"><span class="h5 text-dark"><i class="fas fa-plus-circle"></i></span></a>
     </div>
 </div>
+<div class="select-date d-flex justify-content-center">
+  <form action="/account/selectDate" method="GET">
+    <div class="date-input d-none" id="dateInputField">
+      <input type="date" id="dateInput" name="date">
+      <button class="btn bg-primary text-white mr-1" type="submit">選擇</button>
+    </div>
+  </form>
+</div>
 {{!-- list --}}
-<div class="container col-6 mt-4">
+<div class="container mt-4">
   <div class="list-group">
       {{#each paginationData}}
-      <div class="list-group-item list-group-item-action active d-flex justify-content-between {{#if this.monthlyCheck}}bg-warning{{/if}}">
-        <div class="text-monospace">
-          <i class="far fa-calendar-alt"></i>{{{this.date}}}
+      <div class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center {{#if this.monthlyCheck}}bg-warning{{/if}}">
+        <div class="text-monospace text-dark">
+          <i class="far fa-calendar-alt mr-2"></i>{{{this.date}}}
         </div>
         <div class="text-monospace">
           <span class="badge badge-pill badge-dark font-weight-normal">
@@ -99,22 +101,38 @@
 {{!-- chart --}}
 <div class="container col-6 mt-4 text-center">
   <div class="selectDateTitle">
-    <h1>期間選擇</h1>
+    <span class="h6">期間選擇</span>
   </div>
   <div class="selectDateOption">
     <ul class="nav nav-pills justify-content-center">
       <li class="nav-item" id="week-chart">
-        <button class="btn m-2 bg-primary text-white" type="button">週</button>
+        <button class="btn m-2 bg-primary text-white" type="button">
+          <span>
+            週
+          </span>
+        </button>
       </li>
       <li class="nav-item" id="month-chart">
-        <button class="btn m-2 bg-primary text-white" type="button">月</button>
+        <button class="btn m-2 bg-primary text-white" type="button">
+          <span>
+            月
+          </span>
+        </button>
       </li>
       <li class="nav-item" id="halfyear-chart">
-        <button class="btn m-2 bg-primary text-white" type="button">半年</button>
+        <button class="btn m-2 bg-primary text-white" type="button">
+          <span>
+            半年
+          </span>
+        </button>
       </li>
       <li class="nav-item">
         <!-- Button trigger modal -->
-        <button class="btn m-2 bg-primary text-white" type="button" data-toggle="modal" data-target="#costum-btn">自訂</button>
+        <button class="btn m-2 bg-primary text-white" type="button" data-toggle="modal" data-target="#costum-btn">
+          <span>
+            自訂
+          </span>
+        </button>
       </li>
     </ul>
   </div>
@@ -149,12 +167,12 @@
           </div>
         </form>
 {{!-- chart display --}}
-<div class="chart-wrapper d-flex">
-  <div class="chart1 col-6">
-    <canvas id="totalExpense" width="300" height="300"></canvas>
+<div class="chart-wrapper d-flex flex-wrap justify-content-center">
+  <div class="chart1">
+    <canvas id="totalExpense" width="300px" height="300"></canvas>
   </div>
-  <div class="chart2 col-6">
-    <canvas id="graduallyExpense" width="300" height="300"></canvas>
+  <div class="chart2">
+    <canvas id="graduallyExpense" width="300px" height="300"></canvas>
   </div>
 </div>
 
