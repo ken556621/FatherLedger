@@ -30,17 +30,7 @@
     color: #ffffff;
 }
 
-.display-wrapper{
-    position: relative;
-    left: 10%;
-}
-
 .sortbydate, .sortbyPrice{
     border-radius: 5px;
-}
-
-/* chart */
-.chart1, .chart2{
-    
 }
 

@@ -13,6 +13,7 @@ const mainColor = ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 
 
 function getWeekData(){
     axios.get('http://localhost:3000/chart/week').then(res => {
+        //if no data, default message
         //piechart
         const weekData = res.data;
         const eachExpense = [];
@@ -37,8 +38,8 @@ function getMonthData(){
         const monthData = res.data;
         const eachExpense = [];
         monthData.forEach(eachData => eachExpense.push(sumTotalExpense(eachData)));
-        const weekSession = generateTotalExpense(eachExpense);
-        drawPieChart(weekSession);
+        const monthSession = generateTotalExpense(eachExpense);
+        drawPieChart(monthSession);
         //linechart
         const categories = [];
         const date = [];
@@ -57,8 +58,8 @@ function getHalfYearData(){
         const halfYearData = res.data;
         const eachExpense = [];
         halfYearData.forEach(eachData => eachExpense.push(sumTotalExpense(eachData)));
-        const weekSession = generateTotalExpense(eachExpense);
-        drawPieChart(weekSession);
+        const halfYearSession = generateTotalExpense(eachExpense);
+        drawPieChart(halfYearSession);
         //linechart
         const categories = [];
         const date = [];
@@ -170,7 +171,7 @@ function drawLineChart(eachSession, labels){
 
 weekChart.addEventListener('click', getWeekData);
 monthChart.addEventListener('click', getMonthData);
-halfYearChart.addEventListener('click', getMonthData);
+halfYearChart.addEventListener('click', getHalfYearData);
 customChart.addEventListener('click', function(event){
     console.log('hello')
 })

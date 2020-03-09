@@ -26,6 +26,17 @@
     </div>
   </form>
 </div>
+{{!-- sort button --}}
+<div class="display-wrapper text-right">
+    <div class="sortbydate">
+      <label for="sortDate" class="text-dark">日期排列(小到大)</label>
+      <input type="radio" class="text-dark" id="sortDate" name="sortBy" value="date">
+    </div>
+    <div class="sortbyPrice">
+      <label for="sortPrice" class="text-dark">金額排列(小到大)</label>
+      <input type="radio" id="sortPrice" name="sortBy" value="price">
+    </div>
+</div>
 {{!-- list --}}
 <div class="container mt-4">
   <div class="list-group">
@@ -78,25 +89,15 @@
   </div>
 </div>
 <form action="/" method="GET">
-<nav aria-label="Page navigation" class="mt-2">
-  <ul class="pagination justify-content-center" id="pagination">
-    {{#each pages}}
-      <li class="page-item">
-        <button class="page-link" type="submit" name="page" value="{{{this}}}">{{{this}}}</button>
-      </li>
-    {{/each}}
-  </ul>
-</nav>
-<div class="display-wrapper">
-      <div class="sortbydate">
-        <label for="sortDate" class="text-dark">日期排列(小到大)</label>
-        <input type="radio" class="text-dark" id="sortDate" name="sortBy" value="date">
-      </div>
-      <div class="sortbyPrice">
-        <label for="sortPrice" class="text-dark">金額排列(小到大)</label>
-        <input type="radio" id="sortPrice" name="sortBy" value="price">
-      </div>
-  </div>
+  <nav aria-label="Page navigation" class="mt-2">
+    <ul class="pagination justify-content-center" id="pagination">
+      {{#each pages}}
+        <li class="page-item">
+          <button class="page-link" type="submit" name="page" value="{{{this}}}">{{{this}}}</button>
+        </li>
+      {{/each}}
+    </ul>
+  </nav>
 </form>
 {{!-- chart --}}
 <div class="container col-6 mt-4 text-center">
