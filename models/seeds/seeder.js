@@ -1,54 +1,54 @@
-const mongoose = require('mongoose');
-const Account = require('../account');
+const mongoose = require("mongoose");
+const Account = require("../account");
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/account', { useNewUrlParser:true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/account", { useNewUrlParser:true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
-mongoose.set('useCreateIndex', true)
+mongoose.set("useCreateIndex", true)
 
-db.on('error', () => {
-    console.log('db error')
+db.on("error", () => {
+    console.log("db error")
 })
 
-db.once('open', () => {
-    console.log('db connected!');
+db.once("open", () => {
+    console.log("db connected!");
 
     for(let i = 10;i < 30;i++){
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
-            category: 'food',
+            category: "food",
             date: `202002${i}`,
-            payment: 'cash',
+            payment: "cash",
             userId: "5de3cab3a359256356eb63b1"
         })
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
-            category: 'cloth',
+            category: "cloth",
             date: `202002${i}`,
-            payment: 'cash',
+            payment: "cash",
             userId: "5de3cab3a359256356eb63b1"
         })
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
-            category: 'drink',
+            category: "drink",
             date: `202002${i}`,
-            payment: 'cash',
+            payment: "cash",
             userId: "5de3cab3a359256356eb63b1"
         })
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
-            category: 'rent',
+            category: "rent",
             date: `202002${i}`,
-            payment: 'cash',
+            payment: "cash",
             userId: "5de3cab3a359256356eb63b1"
         })
         Account.create({ 
             price: Math.floor(Math.random() * 10000),
-            category: 'traffic',
+            category: "traffic",
             date: `202002${i}`,
-            payment: 'cash',
+            payment: "cash",
             userId: "5de3cab3a359256356eb63b1"
         })
     }
-    console.log('done')
+    console.log("done")
 })

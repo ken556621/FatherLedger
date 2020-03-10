@@ -1,20 +1,20 @@
-const LocalStrategy = require('passport-local').Strategy;
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const FacebookStrategy = require('passport-facebook').Strategy;
+const LocalStrategy = require("passport-local").Strategy;
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const FacebookStrategy = require("passport-facebook").Strategy;
 
-const User = require('../models/user');
+const User = require("../models/user");
 
 module.exports = passport => {
   passport.use(
     new LocalStrategy({
-      usernameField: 'email'
+      usernameField: "email"
     }, (email,password, done) => {
       User.findOne({
         email: email
       }).then(user => {
         if(!user){
-          return done(null, false, { message: 'That email is not registered yet!' })
+          return done(null, false, { message: "That email is not registered yet!" })
         }
         //比對密碼
         bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -22,7 +22,7 @@ module.exports = passport => {
           if(isMatch){
             return done(null, user)
           }else{
-            return done(null, false, { message: 'Email and password incorrect!' })
+            return done(null, false, { message: "Email and password incorrect!" })
           }
         })
       })
@@ -33,7 +33,7 @@ module.exports = passport => {
       clientID: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET,
       callbackURL: process.env.FACEBOOK_CALLBACK,
-      profileFields: [ 'email', 'displayName' ]
+      profileFields: [ "email", "displayName" ]
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({

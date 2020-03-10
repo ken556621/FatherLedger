@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const accountListSchema = new Schema({
     price: {
@@ -14,10 +14,10 @@ const accountListSchema = new Schema({
     monthlyCheck: String,
     userId: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
         index: true,
         required: true
     }
 });
 
-module.exports = mongoose.model('accountlist', accountListSchema)
+module.exports = mongoose.model("accountlist", accountListSchema)

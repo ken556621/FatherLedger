@@ -24,11 +24,11 @@
 
     `git clone https://github.com/ken556621/FatherLedger.git`
     
-2. Use terminal open file 'myRestaurantList'
+2. Use terminal open file "myRestaurantList"
 
      `cd FatherLedger`
      
-3. Use terminal add new file name '.env'
+3. Use terminal add new file name ".env"
 
     `touch .env`
     

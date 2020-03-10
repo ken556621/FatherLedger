@@ -1,20 +1,20 @@
-const ctx = document.getElementById('totalExpense');
-const ctx2 = document.getElementById('graduallyExpense');
-const weekChart = document.getElementById('week-chart');
-const monthChart = document.getElementById('month-chart');
-const halfYearChart = document.getElementById('halfyear-chart');
-const customChart = document.getElementById('custom-chart');
-const startDate = document.getElementById('startDate');
-const endDate = document.getElementById('endDate');
+const ctx = document.getElementById("totalExpense");
+const ctx2 = document.getElementById("graduallyExpense");
+const weekChart = document.getElementById("week-chart");
+const monthChart = document.getElementById("month-chart");
+const halfYearChart = document.getElementById("halfyear-chart");
+const customChart = document.getElementById("custom-chart");
+const startDate = document.getElementById("startDate");
+const endDate = document.getElementById("endDate");
 
 
 
 
-const expenseLabel = ['食物', '衣物', '飲料', '交通', '房租'];
-const mainColor = ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'];
+const expenseLabel = ["食物", "衣物", "飲料", "交通", "房租"];
+const mainColor = ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"];
 
 function getWeekData(){
-    axios.get('http://localhost:3000/chart/week').then(res => {
+    axios.get("http://localhost:3000/chart/week").then(res => {
         //if no data, default message
         //piechart
         const weekData = res.data;
@@ -35,7 +35,7 @@ function getWeekData(){
 }
 
 function getMonthData(){
-    axios.get('http://localhost:3000/chart/month').then(res => {
+    axios.get("http://localhost:3000/chart/month").then(res => {
         //piechart
         const monthData = res.data;
         const eachExpense = [];
@@ -55,7 +55,7 @@ function getMonthData(){
 }
 
 function getHalfYearData(){
-    axios.get('http://localhost:3000/chart/halfyear').then(res => {
+    axios.get("http://localhost:3000/chart/halfyear").then(res => {
         //piechart
         const halfYearData = res.data;
         const eachExpense = [];
@@ -104,19 +104,19 @@ function sumTotalExpense(eachCategory){
 
 //Generate totalExpense dataset
 function generateTotalExpense(eachCategoryExpense){
-    let category = '';
+    let category = "";
     category = {
         data: eachCategoryExpense,
         backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)'
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)"
         ],
         borderColor: mainColor,
         borderWidth: 2,
-        hoverBackgroundColor: 'rgba(41, 37, 37, 0.2)',
+        hoverBackgroundColor: "rgba(41, 37, 37, 0.2)",
         hoverBorderWidth: 3
     }
     return category;
@@ -126,7 +126,7 @@ function generateTotalExpense(eachCategoryExpense){
 //Generate graduallyExpense dataset
 function generateGraduallyExpense(categories){
     const result = [];
-    let category = '';
+    let category = "";
     for(let i =0;i < expenseLabel.length;i++){
         const eachCategoryExpense = [];
         categories[i].forEach(list =>eachCategoryExpense.push(list.price))
@@ -145,7 +145,7 @@ function generateGraduallyExpense(categories){
 //draw
 function drawPieChart(eachSession){
     const pieChart = new Chart(ctx, {
-        type: 'doughnut',
+        type: "doughnut",
         data: {
             labels: expenseLabel,
             datasets: [
@@ -159,7 +159,7 @@ function drawPieChart(eachSession){
 
 function drawLineChart(eachSession, labels){
     const lineChart = new Chart(ctx2, {
-        type: 'line',
+        type: "line",
         data: {
             labels: labels,
             datasets: eachSession
@@ -171,9 +171,9 @@ function drawLineChart(eachSession, labels){
     return lineChart
 }
 
-weekChart.addEventListener('click', getWeekData);
-monthChart.addEventListener('click', getMonthData);
-halfYearChart.addEventListener('click', getHalfYearData);
-customChart.addEventListener('click', function(event){
+weekChart.addEventListener("click", getWeekData);
+monthChart.addEventListener("click", getMonthData);
+halfYearChart.addEventListener("click", getHalfYearData);
+customChart.addEventListener("click", function(event){
     getCustomData(startDate.value, endDate.value);
 })
