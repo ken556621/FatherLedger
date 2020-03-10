@@ -4,11 +4,6 @@ const Account = require("../models/account");
 const moment = require("moment");
 const { authenticated } = require("../config/auth");
 
-
-
-
-
-
 router.get("/", authenticated, (req, res) => {
     Account.find({ userId: req.user._id }, (err, list) => {
         const today = moment().format("YYYYMMDD");

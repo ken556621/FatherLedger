@@ -4,7 +4,7 @@ const Account = require("../models/account");
 const moment = require("moment");
 
 //display chart
-router.get("/week", (req,res) => {
+router.get("/week", (req, res) => {
     const today = Number(moment().format("YYYYMMDD"));
     const targetDate = Number(moment().subtract(7, "days").format("YYYYMMDD"));
     console.log({today, targetDate})
@@ -20,7 +20,7 @@ router.get("/week", (req,res) => {
     })
 })
 
-router.get("/month", (req,res) => {
+router.get("/month", (req, res) => {
     const today = Number(moment().format("YYYYMMDD"));
     const targetDate = Number(moment().subtract(30, "days").format("YYYYMMDD"));
     Account.find({ date: { $gte: targetDate, $lte: today }, userId: req.user._id }, (err, lists) => {
@@ -34,7 +34,7 @@ router.get("/month", (req,res) => {
     })
 })
 
-router.get("/halfyear", (req,res) => {
+router.get("/halfyear", (req, res) => {
     const today = Number(moment().format("YYYYMMDD"));
     const targetDate = Number(moment().subtract(180, "days").format("YYYYMMDD"));
     Account.find({ date: { $gte: targetDate, $lte: today }, userId: req.user._id }, (err, lists) => {
@@ -48,7 +48,7 @@ router.get("/halfyear", (req,res) => {
     })
 })
 
-router.get("/custom", (req,res, next) => {
+router.get("/custom", (req, res) => {
     const startDate = Number(moment(req.query.startDate).format("YYYYMMDD"));
     const endDate = Number(moment(req.query.endDate).format("YYYYMMDD"));
     Account.find({ date: { $gte: startDate, $lte: endDate }, userId: req.user._id }, (err, lists) => {
@@ -62,5 +62,5 @@ router.get("/custom", (req,res, next) => {
         res.json(category);
     })
 })
-
+ 
 module.exports = router;

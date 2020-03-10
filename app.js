@@ -8,17 +8,16 @@ const methodOverride = require("method-override");
 const app = express();
 const flash = require("connect-flash");
 const port = 3000;
+
 if (process.env.NODE_ENV !== "production") {      
     require("dotenv").config()                     
 }
-
 
 app.engine("handlebars", exphbs({ defaultLayout:"main" }));
 app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(flash());
-
 
 //connect to mongodb
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/account", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
@@ -64,8 +63,6 @@ app.use("/account", require("./routes/account"));
 app.use("/chart", require("./routes/chart"));
 app.use("/users", require("./routes/user"));
 app.use("/auth", require("./routes/auth"));
-
-
 
 
 app.listen(process.env.PORT || port, () => {

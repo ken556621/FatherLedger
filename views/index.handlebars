@@ -38,13 +38,16 @@
 {{!-- list --}}
 <div class="container mt-4">
   <div class="list-group">
+      {{#if defaultList}}
+        <span>Sorry, can't get any data!</span>
+      {{/if}}
       {{#each paginationData}}
       <div class="list-group-item d-flex justify-content-between align-items-center {{#if this.monthlyCheck}}bg-warning{{/if}}">
         <div class="text-monospace text-dark">
           <i class="far fa-calendar-alt mr-2"></i>{{{this.date}}}
         </div>
         <div class="text-monospace">
-          <span class="badge badge-pill badge-dark font-weight-normal">
+          <span class="badge badge-pill badge-dark font-weight-normal p-1">
             ${{{this.price}}}
           </span>
         </div>

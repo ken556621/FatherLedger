@@ -17,7 +17,7 @@ dateInput.addEventListener("input", function(){
 });
 
 sortByDate.addEventListener("click", function(){
-    console.log("date")
+    console.log("date") 
 })
 
 sortByPrice.addEventListener("click", function(){

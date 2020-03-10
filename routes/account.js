@@ -4,8 +4,6 @@ const Account = require("../models/account");
 const moment = require("moment");
 const { authenticated } = require("../config/auth");
 
-
-
 //new
 router.get("/new", authenticated, (req, res) => {
     Account.findOne({ userId: req.user._id }, (err, list) => {
@@ -16,7 +14,6 @@ router.get("/new", authenticated, (req, res) => {
 })
 
 router.post("/new", authenticated, (req, res, next) => {
-    console.log(Number(req.body.date.split("-").join("")))
     const newList = new Account({
         price: req.body.price,
         category: req.body.category,
@@ -38,9 +35,14 @@ router.post("/new", authenticated, (req, res, next) => {
     })
 })
 
-//select date to see
+//select specific date
 router.get("/selectDate", authenticated, (req, res) => {
     Account.find({ date: moment(req.query.date).format("YYYYMMDD"), userId: req.user._id }, (err, list) => {
+        if(list.length === 0){
+            const today = moment().format("YYYYMMDD");
+            const defaultList = true;
+            return res.render("index", { paginationData: list, date: today, defaultList });
+        }
         const date = list[0].date;
         if(err) return console.log(err)
         return res.render("index", { paginationData: list, date });
@@ -49,6 +51,18 @@ router.get("/selectDate", authenticated, (req, res) => {
 
 //sort date
 router.get("/sortDate", authenticated, (req, res) => {
+    const today = moment().format("YYYYMMDD");
+    console.log(req.body)
+    Account.find().sort( { date: -1 } )
+    .lean()
+    .exec((err, list) => { 
+      if (err) return console.error(err)
+      return res.render("index", { paginationData: list, date: today }) 
+    })
+})
+
+//sort price
+router.get("/sortPrice", authenticated, (req, res) => {
     Account.find({ date: moment(req.query.date).format("YYYYMMDD"), userId: req.user._id }, (err, list) => {
         const date = list[0].date;
         if(err) return console.log(err)
