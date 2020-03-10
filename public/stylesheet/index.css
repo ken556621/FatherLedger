@@ -1,3 +1,8 @@
+/* reset */
+a{
+    text-decoration: none;
+}
+
 /* navbar */
 .navbar{
     background: #faf5f3;
@@ -50,26 +55,38 @@
 }
 
 .sortbydate:before{
-    content: '⇡';
+    content: "⇡";
     position: relative;
     left: 70%;
 }
 
 .sortbydate:after{
-    content: '⇣';
+    content: "⇣";
     position: relative;
     left: 10%;
 }
 
 .sortbyPrice:before{
-    content: '⇡';
+    content: "⇡";
     position: relative;
     left: 70%;
 }
 
 .sortbyPrice:after{
-    content: '⇣';
+    content: "⇣";
     position: relative;
     left: 10%;
+}
+
+/* add-new-list-container */
+.add-new-list-container{
+    background-image: url(../img/account.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: calc(100vh - 76px);
+}
+
+.category-label{
+    color: #ebebf0;
 }
 

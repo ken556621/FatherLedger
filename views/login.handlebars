@@ -14,16 +14,19 @@
             <small id="emailHelp" class="form-text text-muted">{{> messages}}</small>
         </div>
         </fieldset>
-        <div class="modal-footer justify-content-between">
+        <div class="modal-footer d-flex justify-content-between">
             <div>
-                <a class="nav-link active h3" href="/users/register">Register</a>
+                <button class="btn bg-primary text-white" type="submit">
+                    <span>
+                        Login
+                    </span>
+                </button>
             </div>
             <div>
-                <a class="h3 text-primary" href="/auth/facebook"><i class="fab fa-facebook-square"></i></a>
+                <a class="h4 text-primary" href="/auth/facebook"><i class="fab fa-facebook-square"></i></a>
             </div>
             <div>
-                <a href="/">homepage</a>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <a class="nav-link active h6" href="/users/register">Register</a>
             </div>
         </div>
     </form>
