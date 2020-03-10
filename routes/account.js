@@ -47,6 +47,15 @@ router.get('/selectDate', authenticated, (req, res) => {
     }) 
 })
 
+//sort date
+router.get('/sortDate', authenticated, (req, res) => {
+    Account.find({ date: moment(req.query.date).format('YYYYMMDD'), userId: req.user._id }, (err, list) => {
+        const date = list[0].date;
+        if(err) return console.log(err)
+        return res.render('index', { paginationData: list, date });
+    }) 
+})
+
 //edit
 router.get('/:id/edit', authenticated, (req, res) => {
     Account.findById({ _id: req.params.id, userId: req.user._id }, (err, list) => { 

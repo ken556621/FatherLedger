@@ -1,10 +1,21 @@
+/* navbar */
+.navbar{
+    background: #faf5f3;
+}
+
+/* list */
+.list-group-item{
+    border: none;
+    border-bottom: 1px solid rgba(#222222, .85);
+    background-color: #faf5f3;
+}
 
 .modify:hover{
-    background-color: #ffffff;
+    background-color: #ebebf0;
 }
 
 .delete:hover{
-    background-color: #ffffff;
+    background-color: #ebebf0;
 }
 
 
@@ -20,17 +31,45 @@
 
 .login, .logout{
     border-radius: 5px;
-}
+} 
 
 .login:hover, .logout:hover{
-    background-color: rgba(150, 150, 150, 1);
-}
-
-.login:hover i, .logout:hover i{
-    color: #ffffff;
+    background-color: #ebebf0;
 }
 
 .sortbydate, .sortbyPrice{
+    cursor: pointer;
     border-radius: 5px;
+}
+
+.sort-btn-wrapper{
+    position: absolute;
+    left: 83%;
+    top: 17%;
+    display: flex;
+}
+
+.sortbydate:before{
+    content: '⇡';
+    position: relative;
+    left: 70%;
+}
+
+.sortbydate:after{
+    content: '⇣';
+    position: relative;
+    left: 10%;
+}
+
+.sortbyPrice:before{
+    content: '⇡';
+    position: relative;
+    left: 70%;
+}
+
+.sortbyPrice:after{
+    content: '⇣';
+    position: relative;
+    left: 10%;
 }
 

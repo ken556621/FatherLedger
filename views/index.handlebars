@@ -27,21 +27,19 @@
   </form>
 </div>
 {{!-- sort button --}}
-<div class="display-wrapper text-right">
-    <div class="sortbydate">
-      <label for="sortDate" class="text-dark">日期排列(小到大)</label>
-      <input type="radio" class="text-dark" id="sortDate" name="sortBy" value="date">
+<div class="sort-btn-wrapper">
+    <div class="sortbydate" id="sortByDate">
+      <span class="text-dark"><i class="far fa-calendar-alt"></i></span>
     </div>
-    <div class="sortbyPrice">
-      <label for="sortPrice" class="text-dark">金額排列(小到大)</label>
-      <input type="radio" id="sortPrice" name="sortBy" value="price">
+    <div class="sortbyPrice" id="sortByPrice">
+      <span class="text-dark"><i class="fas fa-dollar-sign"></i></span>
     </div>
 </div>
 {{!-- list --}}
 <div class="container mt-4">
   <div class="list-group">
       {{#each paginationData}}
-      <div class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center {{#if this.monthlyCheck}}bg-warning{{/if}}">
+      <div class="list-group-item d-flex justify-content-between align-items-center {{#if this.monthlyCheck}}bg-warning{{/if}}">
         <div class="text-monospace text-dark">
           <i class="far fa-calendar-alt mr-2"></i>{{{this.date}}}
         </div>

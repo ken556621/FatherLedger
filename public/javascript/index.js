@@ -2,7 +2,9 @@ const dateBtn = document.getElementById('dateBtn');
 const dateInputField = document.getElementById('dateInputField');
 const dateInput = document.getElementById('dateInput');
 const showDateField = document.getElementById('showDateField');
-const sortDate = document.getElementById('sortDate');
+const sortByDate = document.getElementById('sortByDate');
+const sortByPrice = document.getElementById('sortByPrice');
+
 
 function showDateInput(){
     dateInputField.classList.toggle('d-none')
@@ -14,7 +16,10 @@ dateInput.addEventListener('input', function(){
     showDateField.innerHTML = dateInput.value;
 });
 
-// sortDate.addEventListener('click', function(){
-//     sortByDate();
-// })
+sortByDate.addEventListener('click', function(){
+    console.log('date')
+})
 
+sortByPrice.addEventListener('click', function(){
+    console.log('price')
+})
