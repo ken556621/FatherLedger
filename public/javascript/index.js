@@ -20,16 +20,16 @@ dateInput.addEventListener("input", function(){
 
 sortByDate.addEventListener("click", function(e){
     if(e.target.matches(".fa-arrow-up")){
-        window.location.href = "http://localhost:3000/account/sortDate?sortType=ascend";
+        window.location.href = "https://father-ledger.herokuapp.com/account/sortDate?sortType=ascend" || "http://localhost:3000/account/sortDate?sortType=ascend";
     }else if(e.target.matches(".fa-arrow-down")){
-        window.location.href = "http://localhost:3000/account/sortDate?sortType=descend";
+        window.location.href = "https://father-ledger.herokuapp.com/account/sortDate?sortType=descend" || "http://localhost:3000/account/sortDate?sortType=descend";
     }
 })
 
 sortByPrice.addEventListener("click", function(e){
     if(e.target.matches(".fa-arrow-up")){
-        window.location.href = "http://localhost:3000/account/sortPrice?sortType=ascend";
+        window.location.href = "https://father-ledger.herokuapp.com/account/sortPrice?sortType=ascend" || "http://localhost:3000/account/sortPrice?sortType=ascend";
     }else if(e.target.matches(".fa-arrow-down")){
-        window.location.href = "http://localhost:3000/account/sortPrice?sortType=descend";
+        window.location.href = "https://father-ledger.herokuapp.com/account/sortPrice?sortType=descend" || "http://localhost:3000/account/sortPrice?sortType=descend";
     }
 })
