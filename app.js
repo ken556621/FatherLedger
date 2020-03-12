@@ -6,6 +6,7 @@ const session = require("express-session");
 const passport = require("passport");
 const methodOverride = require("method-override");
 const app = express();
+const cors = require('cors');
 const flash = require("connect-flash");
 const port = 3000;
 
