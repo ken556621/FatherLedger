@@ -18,6 +18,7 @@ app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(flash());
+app.use(cors());
 
 //connect to mongodb
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/account", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
