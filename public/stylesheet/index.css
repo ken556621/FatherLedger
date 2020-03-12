@@ -42,40 +42,20 @@ a{
     background-color: #ebebf0;
 }
 
+/* sort button */
 .sortbydate, .sortbyPrice{
-    cursor: pointer;
     border-radius: 5px;
 }
 
 .sort-btn-wrapper{
     position: absolute;
-    left: 83%;
+    left: 80%;
     top: 17%;
     display: flex;
 }
 
-.sortbydate:before{
-    content: "⇡";
-    position: relative;
-    left: 70%;
-}
-
-.sortbydate:after{
-    content: "⇣";
-    position: relative;
-    left: 10%;
-}
-
-.sortbyPrice:before{
-    content: "⇡";
-    position: relative;
-    left: 70%;
-}
-
-.sortbyPrice:after{
-    content: "⇣";
-    position: relative;
-    left: 10%;
+.fa-arrow-up, .fa-arrow-down{
+    cursor: pointer;
 }
 
 /* add-new-list-container */

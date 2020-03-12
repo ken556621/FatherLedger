@@ -51,23 +51,42 @@ router.get("/selectDate", authenticated, (req, res) => {
 
 //sort date
 router.get("/sortDate", authenticated, (req, res) => {
-    const today = moment().format("YYYYMMDD");
-    console.log(req.body)
-    Account.find().sort( { date: -1 } )
-    .lean()
-    .exec((err, list) => { 
-      if (err) return console.error(err)
-      return res.render("index", { paginationData: list, date: today }) 
-    })
+    const today = moment().format("YYYY-MM-DD");
+    if(req.query.sortType === "ascend"){
+        Account.find().sort( { date: 1 } )
+        .lean()
+        .exec((err, list) => { 
+        if (err) return console.error(err)
+        return res.render("index", { paginationData: list, date: today }) 
+        })
+    }else if(req.query.sortType === "descend"){
+        Account.find().sort( { date: -1 } )
+        .lean()
+        .exec((err, list) => { 
+        if (err) return console.error(err)
+        return res.render("index", { paginationData: list, date: today }) 
+        })
+    }
 })
 
 //sort price
 router.get("/sortPrice", authenticated, (req, res) => {
-    Account.find({ date: moment(req.query.date).format("YYYYMMDD"), userId: req.user._id }, (err, list) => {
-        const date = list[0].date;
-        if(err) return console.log(err)
-        return res.render("index", { paginationData: list, date });
-    }) 
+    const today = moment().format("YYYY-MM-DD");
+    if(req.query.sortType === "ascend"){
+        Account.find().sort( { price: 1 } )
+        .lean()
+        .exec((err, list) => { 
+        if (err) return console.error(err)
+        return res.render("index", { paginationData: list, date: today }) 
+        })
+    }else if(req.query.sortType === "descend"){
+        Account.find().sort( { price: -1 } )
+        .lean()
+        .exec((err, list) => { 
+        if (err) return console.error(err)
+        return res.render("index", { paginationData: list, date: today }) 
+        })
+    }
 })
 
 //edit
