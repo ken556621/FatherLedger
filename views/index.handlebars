@@ -56,7 +56,13 @@
           </span>
         </div>
         <div class="text-monospace">
-          {{{this.category}}}
+          {{#switch this.category}} 
+            {{#case 'food'}} <img class="category-icon" src="/img/fast-food.png" alt="food" /> {{/case}} 
+            {{#case 'cloth'}} <img class="category-icon" src="/img/tshirt.png" alt="cloth" /> {{/case}}
+            {{#case 'drink'}} <img class="category-icon" src="/img/beer.png" alt="drink" /> {{/case}}  
+            {{#case 'rent'}} <img class="category-icon" src="/img/home.png" alt="rent" /> {{/case}}
+            {{#case 'traffic'}} <img class="category-icon" src="/img/car.png" alt="traffic" /> {{/case}}  
+          {{/switch}}
         </div>
         <div class="text-monospace d-flex">
           <form action="/account/{{{this.id}}}/edit" method="GET">
@@ -143,33 +149,33 @@
     </ul>
   </div>
 </div>
-      {{!-- dialog message for customize date select --}}
-          <div class="modal fade" id="costum-btn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">選擇區間</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="d-flex justify-content-around">
-                    <label for="startDate">開始日期</label>
-                    <input class="form-control col-5" type="date" id="startDate" name="startDate">
-                  </div>
-                  <div class="d-flex justify-content-around mt-4">
-                    <label for="endDate">結束日期</label>
-                    <input class="form-control col-5" type="date" id="endDate" name="endDate">
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">先不選</button>
-                    <button type="button" class="btn btn-primary" id="custom-chart" data-dismiss="modal">確定</button>
-                </div>
-              </div>
-            </div>
-          </div>
+{{!-- dialog message for customize date select --}}
+<div class="modal fade" id="costum-btn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">選擇區間</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-around">
+          <label for="startDate">開始日期</label>
+          <input class="form-control col-5" type="date" id="startDate" name="startDate">
+        </div>
+        <div class="d-flex justify-content-around mt-4">
+          <label for="endDate">結束日期</label>
+          <input class="form-control col-5" type="date" id="endDate" name="endDate">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">先不選</button>
+          <button type="button" class="btn btn-primary" id="custom-chart" data-dismiss="modal">確定</button>
+      </div>
+    </div>
+  </div>
+</div>
 {{!-- chart display --}}
 <div class="chart-wrapper d-flex flex-wrap justify-content-center">
   <div class="chart1">

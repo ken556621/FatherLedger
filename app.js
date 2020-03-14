@@ -14,7 +14,20 @@ if (process.env.NODE_ENV !== "production") {
     require("dotenv").config()                     
 }
 
-app.engine("handlebars", exphbs({ defaultLayout:"main" }));
+app.engine("handlebars", exphbs({ 
+    defaultLayout:"main",
+    helpers: {
+        switch: function(value, options){
+            this.switch_value = value;
+            return options.fn(this);
+        },
+        case: function(value, options){
+            if (value == this.switch_value) {
+                return options.fn(this);
+            }
+        }
+    }
+ }));
 app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));

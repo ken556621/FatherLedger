@@ -17,7 +17,6 @@ router.post("/login", (req, res, next) => {
     })(req, res, next)
 })
 
-
 //register
 router.get("/register", (req, res) => {
     res.render("register")
@@ -84,7 +83,6 @@ router.post("/register", (req, res) => {
         }
     })
 })
-
 
 //logout
 router.get("/logout", (req, res, next) => {
