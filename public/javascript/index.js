@@ -20,9 +20,11 @@ dateInput.addEventListener("input", function(){
 
 sortByDate.addEventListener("click", function(e){
     if(e.target.matches(".fa-arrow-up")){
-        window.location.href = "https://father-ledger.herokuapp.com/account/sortDate?sortType=ascend" || "http://localhost:3000/account/sortDate?sortType=ascend";
+        // window.location.href = "https://father-ledger.herokuapp.com/account/sortDate?sortType=ascend" || "http://localhost:3000/account/sortDate?sortType=ascend";
+        window.location.href = "http://localhost:3000/account/sortDate?sortType=ascend";
     }else if(e.target.matches(".fa-arrow-down")){
-        window.location.href = "https://father-ledger.herokuapp.com/account/sortDate?sortType=descend" || "http://localhost:3000/account/sortDate?sortType=descend";
+        // window.location.href = "https://father-ledger.herokuapp.com/account/sortDate?sortType=descend" || "http://localhost:3000/account/sortDate?sortType=descend";
+        window.location.href = "http://localhost:3000/account/sortDate?sortType=descend";
     }
 })
 
