@@ -1,21 +1,59 @@
 # Father Ledger
+![](https://i.imgur.com/Zmmtgao.jpg)
 
 
-## Features
+# Demo
+
+Here is a working live demo: 
+https://father-ledger.herokuapp.com/
+
+## Testing Data
+
+|   User | Email |  Password |
+| -------- | -------- | -------- |
+|  user1        |  user1@example.com        | 12345678         |
+
+
+
+# Technologies
+
+* Built a web with Node.js and Express.js
+* Managed data with CRUD with MongoDB
+* Analyzed each category of expenses in a period and displayed with Chart.js
+* Applied Handlebars to generate HTML template
+* Integrated Bcrypt.js to hash password
+* Applied Moment.js to handle time converting
+* Implemented Connect-Flash to display error message
+* Supported Facebook Login with Passport and Passport Facebook
+* Integreted Bootstrap to build better user interface
+
+
+# Features
+
+### CRUD with each account 
+&nbsp;&nbsp;Users can add, search,  modify and delete each account
+
+### Sort list by date and price 
+&nbsp;&nbsp;Displayed the list with ascend or descend mode to make it easy to search
+
+### Display chart in a period of time 
+&nbsp;&nbsp;Supported chart display mode 
+### Member systems
+&nbsp;&nbsp;Provided native login and Facebook login
+
+
+
+## Routes
 
 | Features | Details  | Routes   |
 | -------- | -------- | -------- |
 | Search   | Date | /account/selectDate |
-| Add new list | Date is required | /account/new |
+| Sort list   | Date & Price | /account/sortDate |
+| Add  | Date is required | /account/new |
 | Edit         |          | /account/edit         | 
 | Delete         | Confirm message          |/account/delete          | 
-| Chart display         |  Week & Month & Half year        |  /chart/week or month or Half year        |
+| Chart Display         |  Week & Month & Half year        |  /chart/week or month or Half year        |
 | Login & Logout     | Facebook login included     | /users/login & /users/logout    |
-
-## Front page
-
-![](https://i.imgur.com/xQiiT1e.png)
-![](https://i.imgur.com/9fM2nCO.png)
 
 
 
@@ -51,12 +89,6 @@
     
     `http://localhost:3000`
     
-## Testing data
-
-|   User | Email |  password |
-| -------- | -------- | -------- |
-|  user1        |  user1@example.com        | 12345678         |
-|  user2|user2@example.com|12345678
 
    
 ## Environment
@@ -70,6 +102,7 @@
 8. Moment js
 9. Chart js
 > Data base
-1. Mongodb
-2. Mongoose
+* Mongodb
+> ODM
+* Mongoose
 
