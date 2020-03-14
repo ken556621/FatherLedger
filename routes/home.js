@@ -13,6 +13,7 @@ router.get("/", authenticated, (req, res) => {
         let page = req.query.page;
         const offset = Number(page) * eachPageItems;
         let paginationData = list.slice(0,10);
+        console.log(paginationData)
         for(let i = 1;i <= totalPages;i++){
             pages.push(i);
         }
