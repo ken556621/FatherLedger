@@ -52,7 +52,7 @@ https://father-ledger.herokuapp.com/
 | Add  | Date is required | /account/new |
 | Edit         |          | /account/edit         | 
 | Delete         | Confirm message          |/account/delete          | 
-| Chart Display         |  Week & Month & Half year        |  /chart/week or month or Half year        |
+| Chart Display         |  Week & Month & half year        |  /chart/week or month or Half year        |
 | Login & Logout     | Facebook login included     | /users/login & /users/logout    |
 
 
