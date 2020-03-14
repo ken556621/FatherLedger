@@ -96,19 +96,42 @@ router.get("/sortDate", authenticated, (req, res) => {
 //sort price
 router.get("/sortPrice", authenticated, (req, res) => {
     const today = moment().format("YYYY-MM-DD");
+    const eachPageItems = 10;
     if(req.query.sortType === "ascend"){
         Account.find().sort( { price: 1 } )
         .lean()
         .exec((err, list) => { 
+        const totalPages = Math.ceil(list.length / eachPageItems) || 1;
+        const pages = [];
+        let page = req.query.page;
+        const offset = Number(page) * eachPageItems;
+        let paginationData = list.slice(0,10);
+        for(let i = 1;i <= totalPages;i++){
+            pages.push(i);
+        }
+        if(page){
+            paginationData = list.slice(offset, offset + eachPageItems);
+        }
         if (err) return console.error(err)
-        return res.render("index", { paginationData: list, date: today }) 
+        return res.render("index", { paginationData, pages, date: today }) 
         })
     }else if(req.query.sortType === "descend"){
         Account.find().sort( { price: -1 } )
         .lean()
         .exec((err, list) => { 
+        const totalPages = Math.ceil(list.length / eachPageItems) || 1;
+        const pages = [];
+        let page = req.query.page;
+        const offset = Number(page) * eachPageItems;
+        let paginationData = list.slice(0,10);
+        for(let i = 1;i <= totalPages;i++){
+            pages.push(i);
+        }
+        if(page){
+            paginationData = list.slice(offset, offset + eachPageItems);
+        }
         if (err) return console.error(err)
-        return res.render("index", { paginationData: list, date: today }) 
+        return res.render("index", { paginationData, pages, date: today }) 
         })
     }
 })
