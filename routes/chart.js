@@ -7,7 +7,6 @@ const moment = require("moment");
 router.get("/week", (req, res) => {
     const today = Number(moment().format("YYYYMMDD"));
     const targetDate = Number(moment().subtract(7, "days").format("YYYYMMDD"));
-    console.log({today, targetDate})
     Account.find({ date: { $gte: targetDate, $lte: today }, userId: req.user._id }, (err, lists) => {
         const food = lists.filter(list => list.category === "food");
         const cloth = lists.filter(list => list.category === "cloth");
@@ -15,7 +14,6 @@ router.get("/week", (req, res) => {
         const rent = lists.filter(list => list.category === "rent");
         const traffic = lists.filter(list => list.category === "traffic");
         const category = [food, cloth, drink, rent, traffic];
-        console.log(lists)
         res.json(category);
     })
 })
