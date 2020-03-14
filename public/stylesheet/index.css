@@ -3,6 +3,10 @@ a{
     text-decoration: none;
 }
 
+p, span, h1, h2, h3, h4, h5, div{
+    font-family: 'Noto Sans', sans-serif;
+}
+
 /* navbar */
 .navbar{
     background: #faf5f3;
