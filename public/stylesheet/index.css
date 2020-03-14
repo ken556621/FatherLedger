@@ -12,6 +12,28 @@ p, span, h1, h2, h3, h4, h5, div{
     background: #faf5f3;
 }
 
+/* login-container */
+.login-container{
+    background-image: url(../img/front-page.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: calc(100vh - 76px);
+}
+
+.login-form{
+    padding: 30px 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(235, 235, 240, 0.8);
+}
+
+.login-button-fb{
+    margin-left: 10px;
+    font-size: 43px;
+}
+
 /* list */
 .list-group-item{
     border: none;
