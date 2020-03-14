@@ -1,7 +1,7 @@
 <div class="add-new-list-container pt-4">
-    <form action="/account/new" method="POST" class="container col-6 add-new-list-form">
-        <div class="form-title mb-4 h5">
-            <span class="text-dark">新增一筆消費</span>
+    <form action="/account/new" method="POST" class="add-new-list-form container col-6">
+        <div class="logo text-center mb-4">
+            <img src="/img/logo.png" width="120" height="120" alt="logo">
         </div>
         <div class="date-input mb-4" id="dateInputField">
             <input class="form-control" type="date" id="dateInput" name="date" {{#if list}}value="{{{date}}}"{{/if}}>
@@ -70,11 +70,6 @@
                 </button>
             </a>
             <div class="btn-save d-flex">
-                <button class="btn mr-2 bg-primary text-white" type="reset">
-                    <span>
-                        重設
-                    </span>
-                </button>
                 <button class="btn bg-primary text-white" type="submit">
                     <span>
                         儲存

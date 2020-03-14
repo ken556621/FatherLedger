@@ -71,7 +71,7 @@ a{
 }
 
 .add-new-list-form{
-    padding: 50px 70px;
+    padding: 10px 50px;
     border-radius: 8px;
     background-color: rgba(235, 235, 240, 0.8);
 }
@@ -85,3 +85,16 @@ a{
     width: 16px;
 }
 
+/* edit-list-container */
+.edit-list-container{
+    background-image: url(../img/account.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: calc(100vh - 76px);
+}
+
+.edit-list-form{
+    padding: 10px 50px;
+    border-radius: 8px;
+    background-color: rgba(235, 235, 240, 0.8);
+}

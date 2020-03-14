@@ -1,76 +1,85 @@
-<div class="container col-4 mt-4">
-    <div class="logo text-center mb-4">
-        <img src="/img/logo.png" width="120" height="120" alt="logo">
-    </div>
-    <form action="/account/{{{list.id}}}/edit?_method=PUT" method="POST">
-        <div class="date-input mb-4" id="dateInputField">
-            <input class="form-control" type="date" id="dateInput" name="date" {{#if list}}value="{{{date}}}"{{/if}}>
-            {{#if errorMessage}}<small class="form-text text-danger">Must be filled in!</small>{{/if}}
+<div class="edit-list-container pt-4">
+    <div class="edit-list-form container col-6">
+        <div class="logo text-center mb-4">
+            <img src="/img/logo.png" width="120" height="120" alt="logo">
         </div>
-        <div class="form-group">
-            <input type="number" class="form-control" id="formGroupExampleInput" placeholder="$" name="price" {{#if list}}value="{{{list.price}}}"{{/if}}>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio1" value="food" name="category" {{#if category.food}} checked {{/if}}>
-            <label class="form-check-label" for="inlineRadio1">
-                <span><i class="fas fa-bread-slice"></i>食物</span>
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio2" value="cloth" name="category" {{#if category.cloth}} checked {{/if}}>
-            <label class="form-check-label" for="inlineRadio2">
-                <span><i class="fas fa-tshirt"></i>衣服</span>
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio3" value="drink" name="category" {{#if category.drink}} checked {{/if}}>
-            <label class="form-check-label" for="inlineRadio3">
-                <span><i class="fas fa-cocktail"></i>飲料</span>
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio4" value="rent" name="category" {{#if category.rent}} checked {{/if}}>
-            <label class="form-check-label" for="inlineRadio4">
-                <span><i class="fas fa-home"></i>房租</span>
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio5" value="traffic" name="category" {{#if category.traffic}} checked {{/if}}>
-            <label class="form-check-label" for="inlineRadio5">
-                <span><i class="fas fa-car"></i>交通</span>
-            </label>
-        </div>
-        <div class="form-group mt-2">
-            <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="描述" name="description" {{#if list}}value="{{{list.description}}}"{{/if}}></input>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio1" value="creditcard" name="payment" {{#if payment.creditcard}} checked {{/if}}>
-            <label class="form-check-label" for="inlineRadio1">
-                <span><i class="far fa-credit-card"></i>信用卡</span>
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio2" value="cash" name="payment" {{#if payment.cash}} checked {{/if}}>
-            <label class="form-check-label" for="inlineRadio2">
-                <span><i class="fas fa-money-bill"></i>現金</span>
-            </label>
-        </div>
-        <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" id="defaultCheck1" name="monthlyCheck" {{#if list.monthlyCheck}} checked {{/if}}>
-            <label class="form-check-label" for="defaultCheck1">
-                將其設為每月固定開銷
-            </label>
-        </div>
-        <div class="btn-wrapper d-flex justify-content-between mt-4">
-            <div class="btn-home">
-                <a href="/"><button type="button" class="btn btn-secondary">首頁</button></a>
+        <form action="/account/{{{list.id}}}/edit?_method=PUT" method="POST">
+            <div class="date-input mb-4" id="dateInputField">
+                <input class="form-control" type="date" id="dateInput" name="date" {{#if list}}value="{{{date}}}"{{/if}}>
+                {{#if errorMessage}}<small class="form-text text-danger">Must be filled in!</small>{{/if}}
             </div>
-            <div class="btn-save d-flex">
-                <div class="btn-reset mr-2">
-                    <button class="btn btn-secondary" type="reset">重設</button>
+            <div class="form-group">
+                <input type="number" class="form-control" id="formGroupExampleInput" placeholder="$" name="price" {{#if list}}value="{{{list.price}}}"{{/if}}>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio1" value="food" name="category" {{#if category.food}} checked {{/if}}>
+                <label class="form-check-label" for="inlineRadio1">
+                    <span><img class="category-icon-small" src="/img/fast-food.png" alt="food" />食物</span>
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio2" value="cloth" name="category" {{#if category.cloth}} checked {{/if}}>
+                <label class="form-check-label" for="inlineRadio2">
+                    <span><img class="category-icon-small" src="/img/tshirt.png" alt="cloth" />衣服</span>
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio3" value="drink" name="category" {{#if category.drink}} checked {{/if}}>
+                <label class="form-check-label" for="inlineRadio3">
+                    <span><img class="category-icon-small" src="/img/beer.png" alt="drink" />飲料</span>
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio4" value="rent" name="category" {{#if category.rent}} checked {{/if}}>
+                <label class="form-check-label" for="inlineRadio4">
+                    <span><img class="category-icon-small" src="/img/home.png" alt="rent" />房租</span>
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio5" value="traffic" name="category" {{#if category.traffic}} checked {{/if}}>
+                <label class="form-check-label" for="inlineRadio5">
+                    <span><img class="category-icon-small" src="/img/car.png" alt="traffic" />交通</span>
+                </label>
+            </div>
+            <div class="form-group mt-2">
+                <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="描述" name="description" {{#if list}}value="{{{list.description}}}"{{/if}}></input>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio1" value="creditcard" name="payment" {{#if payment.creditcard}} checked {{/if}}>
+                <label class="form-check-label" for="inlineRadio1">
+                    <span><img class="category-icon-small" src="/img/bank.png" alt="credit-card" />信用卡</span>
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio2" value="cash" name="payment" {{#if payment.cash}} checked {{/if}}>
+                <label class="form-check-label" for="inlineRadio2">
+                    <span><img class="category-icon-small" src="/img/money.png" alt="credit-card" />現金</span>
+                </label>
+            </div>
+            <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" id="defaultCheck1" name="monthlyCheck" {{#if list.monthlyCheck}} checked {{/if}}>
+                <label class="form-check-label" for="defaultCheck1">
+                    將其設為每月固定開銷
+                </label>
+            </div>
+            <div class="btn-wrapper d-flex justify-content-between mt-4">
+                <div class="btn-home">
+                    <a href="/">
+                        <button class="btn m-2 bg-primary text-white" type="button">
+                            <span>
+                                首頁
+                            </span>
+                        </button>
+                    </a>
                 </div>
-                <button class="btn btn-secondary" type="submit">儲存</button>
+                <div class="btn-save d-flex">
+                    <button class="btn m-2 bg-primary text-white" type="submit">
+                        <span>
+                            儲存
+                        </span>
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
