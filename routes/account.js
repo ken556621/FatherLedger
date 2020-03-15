@@ -78,7 +78,6 @@ router.get("/sortDate", authenticated, (req, res) => {
         const totalPages = Math.ceil(list.length / eachPageItems) || 1;
         const pages = [];
         let page = req.query.page;
-        console.log(req.query)
         const offset = Number(page) * eachPageItems;
         let paginationData = list.slice(0,10);
         for(let i = 1;i <= totalPages;i++){

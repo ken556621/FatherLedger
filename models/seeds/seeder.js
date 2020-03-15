@@ -50,5 +50,4 @@ db.once("open", () => {
             userId: "5e6b7c6f783d1d0004380e34"
         })
     }
-    console.log("done")
 })
