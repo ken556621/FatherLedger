@@ -6,12 +6,6 @@ const halfYearChart = document.getElementById("halfyear-chart");
 const customChart = document.getElementById("custom-chart");
 const startDate = document.getElementById("startDate");
 const endDate = document.getElementById("endDate");
-const config = {
-    headers: {'Access-Control-Allow-Origin': '*'}
-};
-
-
-
 
 const expenseLabel = ["食物", "衣物", "飲料", "交通", "房租"];
 const mainColor = ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"];
