@@ -17,7 +17,7 @@ const expenseLabel = ["食物", "衣物", "飲料", "交通", "房租"];
 const mainColor = ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"];
 
 function getWeekData(){
-    axios.get("https://father-ledger.herokuapp.com/chart/week" || "http://localhost:3000/chart/week", config).then(res => {
+    axios.get("https://father-ledger.herokuapp.com/chart/week" || "http://localhost:3000/chart/week").then(res => {
         //if no data, default message
         //piechart
         const weekData = res.data;
@@ -38,7 +38,7 @@ function getWeekData(){
 }
 
 function getMonthData(){
-    axios.get("https://father-ledger.herokuapp.com/chart/month" || "http://localhost:3000/chart/month", config).then(res => {
+    axios.get("https://father-ledger.herokuapp.com/chart/month" || "http://localhost:3000/chart/month").then(res => {
         //piechart
         const monthData = res.data;
         const eachExpense = [];
@@ -58,7 +58,7 @@ function getMonthData(){
 }
 
 function getHalfYearData(){
-    axios.get("https://father-ledger.herokuapp.com/chart/halfyear" || "http://localhost:3000/chart/halfyear", config).then(res => {
+    axios.get("https://father-ledger.herokuapp.com/chart/halfyear" || "http://localhost:3000/chart/halfyear").then(res => {
         //piechart
         const halfYearData = res.data;
         const eachExpense = [];
@@ -78,7 +78,7 @@ function getHalfYearData(){
 }
 
 function getCustomData(startDate, endDate){
-    axios.get(`https://father-ledger.herokuapp.com/chart/custom?startDate=${startDate}&endDate=${endDate}` || `http://localhost:3000/chart/custom?startDate=${startDate}&endDate=${endDate}`, config).then(res => {
+    axios.get(`https://father-ledger.herokuapp.com/chart/custom?startDate=${startDate}&endDate=${endDate}` || `http://localhost:3000/chart/custom?startDate=${startDate}&endDate=${endDate}`).then(res => {
         //piechart
         const customData = res.data;
         const eachExpense = [];
